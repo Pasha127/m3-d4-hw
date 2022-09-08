@@ -31,22 +31,22 @@ import {Component, useState} from "react";
                       <Card.Text>
                         {this.props.book.category}
                       </Card.Text>
-                      <Button variant="primary" onClick={handleShow}>
+                      <Button variant="primary" onClick={this.handleShow}>
                         Comments
                       </Button>
                       
                     </Card.Body>
                 </Card>
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={this.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Comments:</Modal.Title>
         </Modal.Header>
         <Modal.Body>Welcome to the comments! <br></br>There aren't any here yet. 😔 </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={this.handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={this.handleClose}>
             Save Changes
           </Button>
         </Modal.Footer>
