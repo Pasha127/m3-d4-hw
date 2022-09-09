@@ -1,27 +1,28 @@
-import {Card, Button, Modal} from "react-bootstrap";
-import {Component, useState} from "react";
+import {Card} from "react-bootstrap";
+import {Component } from "react";
+import CommentSection from "./CommentSection";
 
 /* {bookList.filter(book => {book.title.toLowerCase().includes(this.props.query.toLowerCase())}).map((book, index) => (                    
     <Card 
     */                  
    class SingleBook extends Component{
        
-       Example =() =>{
-           const [show, setShow] = useState(false);
-         
-           const handleClose = () => setShow(false);
-           const handleShow = () => setShow(true);}
+       
        state={
-           selected: false        
+           selected: false,
+          
+                
         }
+        
         
         render (){
             return(
                 <>
             <Card onClick={
-                ()=>{
-                    this.setState({selected: true});
+                (e)=>{
+                    this.state.selected === true ? this.setState({selected: false}): this.setState({selected: true});
                     console.log(this);
+                               
                 }
             } className="ml-4" style={{ width: '16rem' }} >
                 
@@ -30,27 +31,10 @@ import {Component, useState} from "react";
                       <Card.Title>{this.props.book.title}</Card.Title>
                       <Card.Text>
                         {this.props.book.category}
-                      </Card.Text>
-                      <Button variant="primary" onClick={this.handleShow}>
-                        Comments
-                      </Button>
-                      
+                      </Card.Text>  
                     </Card.Body>
+                {this.state.selected && this.props.comments && <CommentSection book={this.props.comments}/>}
                 </Card>
-                <Modal show={this.show} onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Comments:</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Welcome to the comments! <br></br>There aren't any here yet. 😔 </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={this.handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
                
             </>
         );

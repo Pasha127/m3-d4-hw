@@ -1,10 +1,11 @@
 import {Component} from "react";
-import {Form,Button} from "react-bootstrap";
+import {Form,Spinner} from "react-bootstrap";
 import SingleBook from "./SingleBook";
 
 class BookList extends Component{
     state={
-        query: ""
+        query: "",
+        isLoading: true
     }
 
     setVal = (e) =>{
@@ -13,11 +14,33 @@ class BookList extends Component{
             query: e.target.value
         });
     }
-        
+    fetchComments = async () => {
+        try {
+            const response = await fetch(`https://striveschool.herokuapp.com/api/comments/${this.props.book.asin}`)
+            if(response.ok) {
+              const data = await response.json()
+                this.setState({ comments: data })
+                console.log(this.state.comments)
+            } else {
+                console.log('error while fetching')
+            }
+          } catch(e) {
+            console.log(e)
+          }
+    }
+    
     render(){
         return(
+            <>
+            {this.state.isLoading && 
+            <div className="d-flex w-100 justify-content-center">
+                <Spinner animation="border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </Spinner>
+            </div>}
             <div className="d-flex flex-column">
-                
+            
+            {this.props.books && this.state.isLoading && this.setState({isLoading: false})}
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Book Search:</Form.Label>
@@ -27,11 +50,17 @@ class BookList extends Component{
             </Form>
             <div className="d-flex flex-wrap">
             {this.props.books.filter(book => {return(book.title.toLowerCase().includes(this.state.query?.toLowerCase()))}).map((book) => {
-                return(<SingleBook key={`${book.asin}-${book.category}`} book={book} query={this.state.query}/>
+                return(<SingleBook
+                    onClick={
+                        ()=>{this.fetchComments();}
+                    } 
+                    key={`${book.asin}-${book.category}`} book={book} query={this.state.query}/>
                )            
             })}
+
             </div>
             </div>
+            </>
             )
         }
         
