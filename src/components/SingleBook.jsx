@@ -22,6 +22,7 @@ import CommentSection from "./CommentSection";
                 (e)=>{
                     this.state.selected === true ? this.setState({selected: false}): this.setState({selected: true});
                     console.log(this);
+                    
                                
                 }
             } className="ml-4" style={{ width: '16rem' }} >

@@ -16,6 +16,7 @@ class BookList extends Component{
     }
     fetchComments = async () => {
         try {
+            console.log("fetchHappens");
             const response = await fetch(`https://striveschool.herokuapp.com/api/comments/${this.props.book.asin}`)
             if(response.ok) {
               const data = await response.json()
@@ -52,7 +53,10 @@ class BookList extends Component{
             {this.props.books.filter(book => {return(book.title.toLowerCase().includes(this.state.query?.toLowerCase()))}).map((book) => {
                 return(<SingleBook
                     onClick={
-                        ()=>{this.fetchComments();}
+                        ()=>{
+                            console.log("click");
+                            this.fetchComments();//problem
+                        }
                     } 
                     key={`${book.asin}-${book.category}`} book={book} query={this.state.query}/>
                )            
