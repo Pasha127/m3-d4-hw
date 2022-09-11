@@ -13,7 +13,7 @@ class CommentList extends Component{
                 {console.log("comments", this.props.comments)}
              {this.props.comments && this.props.comments.map(comment => 
                 <div className="d-flex flex-row">
-                    <div>{comment.comment}</div>
+                    <div className="indComment">{comment.comment}</div>
                     <div className="d-flex flex-row align-items-center  ml-auto">
                     <div className="rating">{comment.rate}</div>
                     <Button className="xButton" variant="danger" size="sm">
