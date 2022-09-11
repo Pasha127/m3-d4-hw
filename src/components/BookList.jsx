@@ -13,22 +13,7 @@ class BookList extends Component{
         this.setState({
             query: e.target.value
         });
-    }
-    fetchComments = async () => {
-        try {
-            console.log("fetchHappens");
-            const response = await fetch(`https://striveschool.herokuapp.com/api/comments/${this.props.book.asin}`)
-            if(response.ok) {
-              const data = await response.json()
-                this.setState({ comments: data })
-                console.log(this.state.comments)
-            } else {
-                console.log('error while fetching')
-            }
-          } catch(e) {
-            console.log(e)
-          }
-    }
+    }   
     
     render(){
         return(
@@ -52,12 +37,6 @@ class BookList extends Component{
             <div className="d-flex flex-wrap">
             {this.props.books.filter(book => {return(book.title.toLowerCase().includes(this.state.query?.toLowerCase()))}).map((book) => {
                 return(<SingleBook
-                    onClick={
-                        ()=>{
-                            console.log("click");
-                            this.fetchComments();//problem
-                        }
-                    } 
                     key={`${book.asin}-${book.category}`} book={book} query={this.state.query}/>
                )            
             })}

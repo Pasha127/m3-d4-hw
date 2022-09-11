@@ -8,7 +8,8 @@ class CommentList extends Component{
 
      render(){
          return(
-             <div>             
+             <div className="commentList">
+                <div className="indComment">Test Comment</div> 
              {this.props.comments && this.props.comments.map(comment => <div>{comment}</div>)}
             </div>
             )

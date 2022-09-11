@@ -21,20 +21,19 @@ import CommentSection from "./CommentSection";
             <Card onClick={
                 (e)=>{
                     this.state.selected === true ? this.setState({selected: false}): this.setState({selected: true});
-                    console.log(this);
-                    
-                               
+                    console.log(this);  
                 }
-            } className="ml-4" style={{ width: '16rem' }} >
+            } className={`ml-4 mb-4 ${this.state.selected ? "highlight" : "noHighlight"}`} style={{ width: '16rem' }} >
                 
-                <Card.Img variant="top" src={this.props.book.img} className={this.state.selected ? "highlight" : "noHighlight"} /> :
+                <Card.Img variant="top" src={this.props.book.img} /> 
                     <Card.Body>
                       <Card.Title>{this.props.book.title}</Card.Title>
                       <Card.Text>
                         {this.props.book.category}
                       </Card.Text>  
                     </Card.Body>
-                {this.state.selected && this.props.comments && <CommentSection book={this.props.comments}/>}
+                    {this.state.selected ? <div>Comments:</div> : <div> Click Card For Comments</div>}
+                {this.state.selected && <CommentSection book={this.props.book}/>}
                 </Card>
                
             </>
