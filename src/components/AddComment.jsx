@@ -3,15 +3,22 @@ import {Component} from "react";
 
 class AddComment extends Component{
     state={
-               
+        query: "",
      }
+     setQuery = (e) =>{      
+      this.setState({
+          query: e.target.value
+      });
+  }
      addComment = async () =>{
         try {
             console.log("postTryHappens");
             const response = await fetch(`https://striveschool.herokuapp.com/api/comments/${this.props.book.asin}`,{
-                headers: {
-                   "Content-Type":"application/json", "Method": "POST","Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjI4ODA5NzMsImV4cCI6MTY2NDA5MDU3M30.LfQNzOVOStsDroMA6F7Hu2gO4oCR7rLxAzXx1RhXmk8"
-                }
+            method: "POST",    
+            headers: {
+                   "Content-Type":"application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjI4ODA5NzMsImV4cCI6MTY2NDA5MDU3M30.LfQNzOVOStsDroMA6F7Hu2gO4oCR7rLxAzXx1RhXmk8"
+                },
+            body: JSON.stringify(this.state.query)
             })
             if(response.ok) {
                 console.log("postHappens");
@@ -32,9 +39,11 @@ class AddComment extends Component{
               placeholder="New Comment"
               aria-label="New Comment"
               aria-describedby="basic-addon2"
+              onChange={(e)=>{this.setQuery(e)}} 
             />
             <InputGroup.Append>
-              <Button onClick={this.addComment} variant="outline-secondary">Add</Button>
+              <Button onClick={() =>{
+                this.addComment()}} variant="outline-secondary">Add</Button>
             </InputGroup.Append>
           </InputGroup>
             )
