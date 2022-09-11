@@ -23,7 +23,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.xButton{
+  display: flex;
+  height: 1.2rem;
+  align-items: center;
+}
 .App-link {
   color: #61dafb;
 }
@@ -59,4 +63,30 @@
 }
 .commentList{
   border: 2px solid black;
+}
+.greyBg{
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top:0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #282c3473;
+  z-index: 9999;
+}
+.spinner-border{
+  width: 15rem;
+  height: 15rem;
+  color: white;
+  border: 1.25em solid currentColor;
+  border-right-color: transparent;
+}
+.rating{
+  border-radius: 4px;
+  border: 2px solid black;
+  display: flex;
+  height: 1.2rem;
+  align-items: center;
 }

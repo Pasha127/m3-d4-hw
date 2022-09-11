@@ -1,4 +1,4 @@
-//import {} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Component} from "react";
 
 class CommentList extends Component{
@@ -10,7 +10,17 @@ class CommentList extends Component{
          return(
              <div className="commentList">
                 <div className="indComment">Test Comment</div> 
-             {this.props.comments && this.props.comments.map(comment => <div>{comment}</div>)}
+                {console.log("comments", this.props.comments)}
+             {this.props.comments && this.props.comments.map(comment => 
+                <div className="d-flex flex-row">
+                    <div>{comment.comment}</div>
+                    <div className="d-flex flex-row align-items-center  ml-auto">
+                    <div className="rating">{comment.rate}</div>
+                    <Button className="xButton" variant="danger" size="sm">
+                        X
+                    </Button>
+                    </div>
+                </div>)}
             </div>
             )
         }

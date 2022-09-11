@@ -1,5 +1,5 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import WarningSign from './components/WarningSign';
 import MyBadge from './components/MyBadge';
 import BookList from './components/BookList';
@@ -20,7 +20,7 @@ function App() {
         <div className='row'>
         <BookList books={books2}/>
         </div>
-      </div>
+      </div>      
     </div>
   );
 }
