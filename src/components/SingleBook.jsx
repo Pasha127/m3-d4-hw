@@ -21,7 +21,7 @@ import CommentSection from "./CommentSection";
             <Card onClick={
                 (e)=>{
                     this.state.selected === true ? this.setState({selected: false}): this.setState({selected: true});
-                    console.log(this);  
+                    console.log(this, "clicked card");  
                 }
             } className={`ml-4 mb-4 ${this.state.selected ? "highlight" : "noHighlight"}`} style={{ width: '16rem' }} >
                 

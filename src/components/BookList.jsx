@@ -47,11 +47,7 @@ class BookList extends Component{
             )
         }
         
-    }
-    
-   // <Button onClick={()=>{}} aria-label="Enter">
-   //     <p className="mb-0">Enter</p>
-   // </Button>  
-    
+    }   
+
 
 export default BookList

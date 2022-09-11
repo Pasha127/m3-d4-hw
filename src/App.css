@@ -90,3 +90,12 @@
   height: 1.2rem;
   align-items: center;
 }
+.alertContainer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
