@@ -11,7 +11,7 @@ class CommentList extends Component{
         try {
             this.setState({isLoading: true})
             console.log("postTryHappens");
-            const response = await fetch(`{https://striveschool-api.herokuapp.com/api/comments/${id}`,{
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`,{
             method: 'DELETE',    
             headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjI4ODA5NzMsImV4cCI6MTY2NDA5MDU3M30.LfQNzOVOStsDroMA6F7Hu2gO4oCR7rLxAzXx1RhXmk8'}
             })
@@ -40,7 +40,7 @@ class CommentList extends Component{
                     <div className="indComment">{comment.comment}</div>
                     <div className="d-flex flex-row align-items-center  ml-auto">
                     <div className="rating">{comment.rate}</div>
-                    <Button onClick={() => {this.deleteComment(comment.elementId); console.log(comment.elementId)}} className="xButton" variant="danger" size="sm">
+                    <Button onClick={() => {this.deleteComment(comment._id); console.log(comment._id)}} className="xButton" variant="danger" size="sm">
                         X
                     </Button>
                     </div>
