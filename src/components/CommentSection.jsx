@@ -40,6 +40,9 @@ class CommentSection extends Component{
      componentDidMount = async () => {
         this.fetchComments();
     }
+    componentDidUpdate=(prevProps,prevState)=>{
+
+    }
      render(){
          return(<>
             
