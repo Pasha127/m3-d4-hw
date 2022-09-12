@@ -1,5 +1,7 @@
 import {InputGroup, Dropdown, DropdownButton, FormControl, Button} from "react-bootstrap";
 import {Component} from "react";
+import ErrorComp from "./ErrorComp";
+import LoadingComp from "./LoadingComp";
 
 class AddComment extends Component{
     state={
@@ -7,7 +9,9 @@ class AddComment extends Component{
           comment: "",
           rate: "",
           elementId: ""
-        }
+        },
+        isLoading: false,
+        error: ""
      }
      setQuery = (e) =>{      
       this.setState({
@@ -21,7 +25,8 @@ class AddComment extends Component{
       this.setState({
         query: {...this.state.query,
           rate: e.target.innerText
-        }
+        },
+        error: ""
       });
   }
      addComment = async () =>{
@@ -36,15 +41,25 @@ class AddComment extends Component{
                 console.log("postHappens");
                 const data = await response.json()
                 this.setState({ comments: data })
-            } else {
+              } else {
                 console.log('error while posting')
+                this.setState({error: "Post"})
             }
         } catch(err) {
             console.log(err)
-          }
+            this.setState({error: "Post"})
+          }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000);this.setState({
+            query: {...this.state.query,
+              comment: "",
+              elementId: "",
+              rate: ""
+            }
+          })}
      }
      render(){
-         return(
+         return(<>
+            {this.state.error && <ErrorComp error={this.state.error}/>}
+            {this.state.isLoading && <LoadingComp/>}
             <InputGroup className="mb-3">
               <div className="d-flex flex-row">
                 
@@ -84,7 +99,7 @@ class AddComment extends Component{
               
           </div>
           </InputGroup>
-            )
+          </>)
         }
 }
 
