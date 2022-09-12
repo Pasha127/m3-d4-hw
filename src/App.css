@@ -99,3 +99,15 @@
   align-items: center;
   z-index: 100;
 }
+.homeCommentContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  width: 10vw;
+}
+.homeCardContainer{
+  width: 90vw;
+}

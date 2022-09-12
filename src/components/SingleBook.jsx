@@ -33,7 +33,7 @@ import CommentSection from "./CommentSection";
                       </Card.Text>  
                     </Card.Body>
                     {this.state.selected ? <div>Comments:</div> : <div> Click Card For Comments</div>}
-                {this.state.selected && <CommentSection book={this.props.book}/>}
+                
                 </Card>
                
             </>
