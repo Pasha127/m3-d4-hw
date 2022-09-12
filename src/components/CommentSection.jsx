@@ -11,7 +11,7 @@ class CommentSection extends Component{
         isLoading: false,
         error:     ""   
      }
-     componentDidMount = async () => {
+     fetchComments = async ()=>{
         try {
             this.setState({isLoading: true})
             console.log("fetchTries");
@@ -35,14 +35,17 @@ class CommentSection extends Component{
             this.setState({error: "Get"})
                 
           }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000)}
+     }
+     componentDidMount = async () => {
+        this.fetchComments();
     }
      render(){
          return(<>
             {this.state.error && <ErrorComp error={this.state.error}/>}
             {this.state.isLoading && <LoadingComp/>}
              <div  onClick={(e)=>{e.stopPropagation()}}>             
-             <CommentList comments={this.state.comments}/>            
-             <AddComment  book={this.props.book}/> 
+             <CommentList fetchComments={this.fetchComments} comments={this.state.comments}/>            
+             <AddComment fetchComments={this.fetchComments} book={this.props.book}/> 
             </div>
          </>
             )

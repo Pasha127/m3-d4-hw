@@ -16,7 +16,8 @@ class CommentList extends Component{
             headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjI4ODA5NzMsImV4cCI6MTY2NDA5MDU3M30.LfQNzOVOStsDroMA6F7Hu2gO4oCR7rLxAzXx1RhXmk8'}
             })
             if(response.ok) {
-                console.log("delHappens");                
+                console.log("delHappens"); 
+                //this.forceUpdate();               
               } else {
                 console.log('error while deleting')
                 this.setState({error: "Delete"})
@@ -24,7 +25,7 @@ class CommentList extends Component{
         } catch(err) {
             console.log(err)
             this.setState({error: "Delete"})
-          }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000);}
+          }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000); }
      }
 
 
@@ -40,7 +41,7 @@ class CommentList extends Component{
                     <div className="indComment">{comment.comment}</div>
                     <div className="d-flex flex-row align-items-center  ml-auto">
                     <div className="rating">{comment.rate}</div>
-                    <Button onClick={() => {this.deleteComment(comment._id); console.log(comment._id)}} className="xButton" variant="danger" size="sm">
+                    <Button onClick={() => {this.deleteComment(comment._id); console.log(comment._id);}} className="xButton" variant="danger" size="sm">
                         X
                     </Button>
                     </div>
