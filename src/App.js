@@ -9,7 +9,7 @@ import booksho from "./books/horror.json";
 import booksr from "./books/romance.json";
 import bookss from "./books/scifi.json";
 import CommentSection from './components/CommentSection';
-import RootComponent from './RootComponent';
+import RootComponent from './components/RootComponent';
 const books2 =booksf.concat( ...booksh,...booksho,...booksr,...bookss)
 
 

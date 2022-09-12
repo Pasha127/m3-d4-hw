@@ -17,7 +17,7 @@ class AddComment extends Component{
       this.setState({
         query: {...this.state.query,
           comment: e.target.value,
-          elementId: this.props.book.asin
+          elementId: this.props.book
         }
       });
   }

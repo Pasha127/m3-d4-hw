@@ -1,6 +1,6 @@
 import {Component} from "react";
-import BookList from "./components/BookList";
-import CommentSection from "./components/CommentSection";
+import BookList from "./BookList";
+import CommentSection from "./CommentSection";
 
 
 class RootComponent extends Component{

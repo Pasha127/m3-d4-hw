@@ -27,7 +27,9 @@ class CommentList extends Component{
             this.setState({error: "Delete"})
           }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000); }
      }
-
+     componentDidUpdate = (prevProps,prevState) =>{
+        prevProps !== this.props && this.props.fetchComments();
+     }
 
      render(){
          return(<>
