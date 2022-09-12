@@ -21,7 +21,7 @@ import CommentSection from "./CommentSection";
             <Card onClick={
                 (e)=>{
                     this.state.selected === true ? this.setState({selected: false}): this.setState({selected: true});
-                    console.log(this, "clicked card");  
+                    console.log(this, "clicked card"); this.props.cardSelected(this.props.book.asin);  
                 }
             } className={`ml-4 mb-4 ${this.state.selected ? "highlight" : "noHighlight"}`} style={{ width: '16rem' }} >
                 
@@ -32,7 +32,7 @@ import CommentSection from "./CommentSection";
                         {this.props.book.category}
                       </Card.Text>  
                     </Card.Body>
-                    {this.state.selected ? <div>Comments:</div> : <div> Click Card For Comments</div>}
+                    {this.state.selected ? <div></div> : <div> Click Card For Comments</div>}
                 
                 </Card>
                

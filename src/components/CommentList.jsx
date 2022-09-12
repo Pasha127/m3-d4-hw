@@ -39,7 +39,7 @@ class CommentList extends Component{
              {this.props.comments && this.props.comments.map(comment => 
                 <div key={comment._id} className="d-flex flex-row">
                     <div className="indComment">{comment.comment}</div>
-                    <div className="d-flex flex-row align-items-center  ml-auto">
+                    <div className="d-flex flex-row align-items-center ml-auto">
                     <div className="rating">{comment.rate}</div>
                     <Button onClick={() => {this.deleteComment(comment._id); console.log(comment._id);}} className="xButton" variant="danger" size="sm">
                         X

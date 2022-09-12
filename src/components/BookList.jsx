@@ -37,7 +37,7 @@ class BookList extends Component{
             <div className="d-flex flex-wrap">
             {this.props.books.filter(book => {return(book.title.toLowerCase().includes(this.state.query?.toLowerCase()))}).map((book) => {
                 return(<SingleBook
-                    key={`${book.asin}-${book.category}`} book={book} query={this.state.query}/>
+                    key={`${book.asin}-${book.category}`} book={book} query={this.state.query} cardSelected={this.props.cardSelected}/>
                )            
             })}
 

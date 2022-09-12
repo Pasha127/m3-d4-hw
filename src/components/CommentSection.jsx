@@ -15,7 +15,8 @@ class CommentSection extends Component{
         try {
             this.setState({isLoading: true})
             console.log("fetchTries");
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.book.asin}`,{
+            console.log("test comments",this.props.book);
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.book}`,{
                 headers: {
                     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjI4ODA5NzMsImV4cCI6MTY2NDA5MDU3M30.LfQNzOVOStsDroMA6F7Hu2gO4oCR7rLxAzXx1RhXmk8"
                 }
@@ -41,6 +42,7 @@ class CommentSection extends Component{
     }
      render(){
          return(<>
+            
             {this.state.error && <ErrorComp error={this.state.error}/>}
             {this.state.isLoading && <LoadingComp/>}
              <div  onClick={(e)=>{e.stopPropagation()}}>             
