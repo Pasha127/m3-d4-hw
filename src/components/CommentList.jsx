@@ -1,15 +1,17 @@
 import {Button} from "react-bootstrap";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import ErrorComp from "./ErrorComp";
 import LoadingComp from "./LoadingComp";
 
-const CommentList= ()=>{
+const CommentList= (props)=>{
     /* state={isLoading: false,
         error:     ""   }   */ 
-     
-        const deleteComment = async (id) =>{
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
+    
+    const deleteComment = async (id) =>{
         try {
-            this.setState({isLoading: true})
+            setIsLoading({isLoading: true})
             console.log("postTryHappens");
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`,{
             method: 'DELETE',    
@@ -17,33 +19,33 @@ const CommentList= ()=>{
             })
             if(response.ok) {
                 console.log("delHappens"); 
-                //this.forceUpdate();               
+                           
               } else {
                 console.log('error while deleting')
-                this.setState({error: "Delete"})
+                setError({error: "Delete"})
             }
         } catch(err) {
             console.log(err)
-            this.setState({error: "Delete"})
-          }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000); this.props.fetchComments();}
+            setError({error: "Delete"})
+          }finally{setIsLoading({isLoading: false}); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000); props.fetchComments();}
      }
      const componentDidUpdate = (prevProps,prevState) =>{
-        if(prevProps.comments !== this.props.comments){ this.forceUpdate();console.log("update")} 
+        if(prevProps.comments !== props.comments){ forceUpdate();console.log("update")} 
      }
 
      
          return(<>
-         {this.state.error && <ErrorComp error={this.state.error}/>}
-            {this.state.isLoading && <LoadingComp/>}
+         {error && <ErrorComp error={error}/>}
+            {isLoading && <LoadingComp/>}
              <div className="commentList">
                 {/* <div className="indComment">Test Comment</div>  */}
-                {console.log("comments", this.props.comments)}
-             {this.props.comments && this.props.comments.map(comment => 
+                {console.log("comments", props.comments)}
+             {props.comments && props.comments.map(comment => 
                 <div key={comment._id} className="d-flex flex-row">
                     <div className="indComment">{comment.comment}</div>
                     <div className="d-flex flex-row align-items-center ml-auto">
                     <div className="rating">{comment.rate}</div>
-                    <Button onClick={() => {this.deleteComment(comment._id); console.log(comment._id);}} className="xButton" variant="danger" size="sm">
+                    <Button onClick={() => {deleteComment(comment._id); console.log(comment._id);}} className="xButton" variant="danger" size="sm">
                         X
                     </Button>
                     </div>

@@ -1,15 +1,16 @@
 import {useState} from "react";
 import {Form,Spinner} from "react-bootstrap";
 import SingleBook from "./SingleBook";
-const BookList= ()=>{
+const BookList= (props)=>{
     /* state={
         query: "",
         isLoading: true
     } */
-
+    const [isLoading, setIsLoading] = useState(false);
+    const [query, setQuery] = useState("");
     const setVal = (e) =>{
         e.preventDefault();
-        this.setState({
+        setQuery({
             query: e.target.value
         });
     }   
@@ -17,7 +18,7 @@ const BookList= ()=>{
     
         return(
             <>
-            {this.state.isLoading && 
+            {isLoading && 
             <div className="d-flex w-100 justify-content-center">
                 <Spinner animation="border" role="status">
                     <span className="sr-only">Loading...</span>
@@ -25,18 +26,18 @@ const BookList= ()=>{
             </div>}
             <div className="d-flex flex-column">
             
-            {this.props.books && this.state.isLoading && this.setState({isLoading: false})}
+            {props.books && isLoading && setIsLoading({isLoading: false})}
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Book Search:</Form.Label>
-                  <Form.Control onChange={(e)=>{this.setVal(e)}} value={this.state.value} type="input" placeholder="Enter a book title"  />
+                  <Form.Control onChange={(e)=>{setVal(e)}} /* value={this.state.value} */ type="input" placeholder="Enter a book title"  />
                                
                 </Form.Group>
             </Form>
             <div className="d-flex flex-wrap">
-            {this.props.books.filter(book => {return(book.title.toLowerCase().includes(this.state.query?.toLowerCase()))}).map((book) => {
+            {props.books.filter(book => {return(book.title.toLowerCase().includes(query?.toLowerCase()))}).map((book) => {
                 return(<SingleBook
-                    key={`${book.asin}-${book.category}`} book={book} query={this.state.query} cardSelected={this.props.cardSelected}/>
+                    key={`${book.asin}-${book.category}`} book={book} query={query} cardSelected={props.cardSelected}/>
                )            
             })}
 
