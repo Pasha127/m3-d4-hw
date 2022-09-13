@@ -8,6 +8,7 @@ const CommentList= (props)=>{
         error:     ""   }   */ 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
+    const [mapAllowed, setMapAllowed] = useState(true);
     
     const deleteComment = async (id) =>{
         try {
@@ -27,7 +28,7 @@ const CommentList= (props)=>{
         } catch(err) {
             console.log(err)
             setError( "Delete")
-          }finally{setIsLoading( false); setTimeout(()=>{setError(""); console.log("err cleared")},5000); ;}
+          }finally{setIsLoading( false); setTimeout(()=>{setError(""); console.log("err cleared")},5000);;}
      }   
 
          return(<>

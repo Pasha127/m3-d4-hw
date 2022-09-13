@@ -17,7 +17,7 @@ const CommentSection = (props)=>{
     const [comments, setComments] = useState([]);
 
      const fetchComments = async ()=>{
-        try {
+        if(props.book){try {
             setIsLoading( true)
             console.log("fetchTries");
             console.log("test comments",props.book);
@@ -41,7 +41,7 @@ const CommentSection = (props)=>{
             setError("Get")
                 
           }finally{setIsLoading( false); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000)}
-     }
+     }}
      /* const componentDidMount = async () => {
         props.book && fetchComments();
     } */
