@@ -75,7 +75,7 @@ class AddComment extends Component{
               aria-label="New Comment"
               aria-describedby="basic-addon2"
               value= {this.state.query.comment}
-              onChange={(e)=>{this.setQuery(e); console.log(this.state.query)}} 
+              onChange={(e)=>{this.setQuery(e);}} 
               />
             <InputGroup.Append>
               <Button onClick={() =>{
