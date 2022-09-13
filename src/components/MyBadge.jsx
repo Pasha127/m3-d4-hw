@@ -1,11 +1,11 @@
 import {Badge} from "react-bootstrap";
-import {useState} from "react";
 
-const MyBadge = ()=>{
+
+const MyBadge = (props)=>{
     
         return(
             <Badge pill variant="secondary">
-            {this.props.inputText}
+            {props.inputText}
             </Badge>
         )
     

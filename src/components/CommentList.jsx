@@ -19,7 +19,7 @@ const CommentList= (props)=>{
             })
             if(response.ok) {
                 console.log("delHappens"); 
-                           
+                props.fetchComments()
               } else {
                 console.log('error while deleting')
                 setError({error: "Delete"})
@@ -27,12 +27,8 @@ const CommentList= (props)=>{
         } catch(err) {
             console.log(err)
             setError({error: "Delete"})
-          }finally{setIsLoading({isLoading: false}); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000); props.fetchComments();}
-     }
-     const componentDidUpdate = (prevProps,prevState) =>{
-        if(prevProps.comments !== props.comments){ forceUpdate();console.log("update")} 
-     }
-
+          }finally{setIsLoading({isLoading: false}); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000); ;}
+     }   
      
          return(<>
          {error && <ErrorComp error={error}/>}

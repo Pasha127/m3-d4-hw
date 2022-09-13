@@ -1,15 +1,15 @@
-import {useState} from "react";
+
 import {Alert} from "react-bootstrap";
 
 
-const WarningSign= ()=>{
+const WarningSign= (props)=>{
     
         return(
 
             
             ['danger'].map((variant, idx) => (
                 <Alert key={idx} variant={variant}>
-                    This is a {variant} alert—{this.props.inputText}!
+                    This is a {variant} alert—{props.inputText}!
                 </Alert>
                 )
   ));

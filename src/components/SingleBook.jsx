@@ -5,7 +5,7 @@ import CommentSection from "./CommentSection";
 /* {bookList.filter(book => {book.title.toLowerCase().includes(this.props.query.toLowerCase())}).map((book, index) => (                    
     <Card 
     */                  
-    const SingleBook= ()=>{
+    const SingleBook= (props)=>{
        
        
        /* state={
@@ -13,26 +13,26 @@ import CommentSection from "./CommentSection";
           
                 
         } */
-        
+        const [selected, setSelected] = useState(false);
         
         
             return(
                 <>
             <Card onClick={
                 (e)=>{
-                    this.state.selected === true ? this.setState({selected: false}): this.setState({selected: true});
-                    console.log(this, "clicked card"); this.props.cardSelected(this.props.book.asin);  
+                    selected === true ? setSelected({selected: false}): setSelected({selected: true});
+                    console.log(this, "clicked card"); props.cardSelected(props.book.asin);  
                 }
-            } className={`ml-4 mb-4 ${this.state.selected ? "highlight" : "noHighlight"}`} style={{ width: '16rem' }} >
+            } className={`ml-4 mb-4 ${selected ? "highlight" : "noHighlight"}`} style={{ width: '16rem' }} >
                 
-                <Card.Img variant="top" src={this.props.book.img} /> 
+                <Card.Img variant="top" src={props.book.img} /> 
                     <Card.Body>
-                      <Card.Title>{this.props.book.title}</Card.Title>
+                      <Card.Title>{props.book.title}</Card.Title>
                       <Card.Text>
-                        {this.props.book.category}
+                        {props.book.category}
                       </Card.Text>  
                     </Card.Body>
-                    {this.state.selected ? <div></div> : <div> Click Card For Comments</div>}
+                    {selected ? <div></div> : <div> Click Card For Comments</div>}
                 
                 </Card>
                

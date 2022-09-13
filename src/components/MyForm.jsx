@@ -6,9 +6,11 @@ const MyForm = ()=>{
    /*  state={
         query:""
     }; */
+    const [query, setQuery] = useState("");
+    const [value, setValue] = useState("");
     const setVal = (e) =>{
         e.preventDefault();
-        this.setState({
+        setQuery({
             query: e.target.value
         });
     }
@@ -19,11 +21,11 @@ const MyForm = ()=>{
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Book Search:</Form.Label>
-                  <Form.Control onChange={(e)=>{this.setVal(e)}} value={this.state.value} type="input" placeholder="Enter book title"  />
+                  <Form.Control onChange={(e)=>{setVal(e)}} value={value} type="input" placeholder="Enter book title"  />
                     <Button onClick={()=>{}} aria-label="Enter">
                         <p className="mb-0">Enter</p>
                     </Button> 
-                    {console.log(this.state.query)}             
+                    {console.log(query)}             
                 </Form.Group>
             </Form>
             

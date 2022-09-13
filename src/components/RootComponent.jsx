@@ -3,12 +3,13 @@ import BookList from "./BookList";
 import CommentSection from "./CommentSection";
 
 
-const RootComponent = ()=>{
+const RootComponent = (props)=>{
    /*  state={
         cardId: ""
     } */
+    const [cardId, setCardId] = useState("");
     const cardSelected= (id)=>{
-        this.setState({cardId: `${id}`});
+        setCardId({cardId: `${id}`});
         console.log(`card selected ${id} at root`)
     }
 
@@ -22,11 +23,11 @@ const RootComponent = ()=>{
             <div className='row'>
           </div>
         </div>
-        <BookList cardSelected={this.cardSelected} books={this.props.books}/>        
+        <BookList cardSelected={cardSelected} books={props.books}/>        
         </div>
       </div>      
         <div className='homeCommentContainer'>
-        <CommentSection book={this.state.cardId}/>
+        <CommentSection book={cardId}/>
         </div>
     </div>
 )}

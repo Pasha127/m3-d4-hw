@@ -1,5 +1,5 @@
 import {Spinner} from "react-bootstrap";
-import {useState} from "react";
+
              
 const LoadingComp = ()=>{
      
