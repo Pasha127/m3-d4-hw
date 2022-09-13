@@ -24,20 +24,17 @@ const AddComment = (props)=>{
   const [allowFetch, setAllowFetch] = useState(false);
   const [comments, setComments] = useState(null);
      const setMyQuery = (e) =>{      
-      setQuery({
-        query: {...query,
+      setQuery( {...query,
           comment: e.target.value,
           elementId: this.props.book
         }        
-      });setAllowFetch(false);
+      );setAllowFetch(false);
   }
      const setRate = (e) =>{      
-      setQuery({
-        query: {...query,
+      setQuery( {...query,
           rate: e.target.innerText
-        },
-        error: ""
-      });
+        },);
+        setError("");
   }
      const addComment = async () =>{
         try {
@@ -50,22 +47,21 @@ const AddComment = (props)=>{
             if(response.ok) {
                 console.log("postHappens");
                 const data = await response.json()
-                setComments({ comments: data })
+                setComments( data )
               } else {
                 console.log('error while posting')
-                setError({error: "Post"})
+                setError( "Post")
             }
         } catch(err) {
             console.log(err)
-            setError({error: "Post"})
-          }finally{setIsLoading({isLoading: false});setAllowFetch({allowFetch: true}); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000);
-          setQuery({
-            query: {...query,
+            setError( "Post")
+          }finally{setIsLoading( false);setAllowFetch({allowFetch: true}); setTimeout(()=>{setError(""); console.log("err cleared")},5000);
+          setQuery( {...query,
               comment: "",
               elementId: "",
               rate: ""
             }
-          })       
+          )       
      }}
     /*  const componentDidUpdate =(prevProps,prevState)=>{
       if(allowFetch && prevState.query !== query){this.props.fetchComments()}

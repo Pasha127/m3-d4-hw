@@ -18,7 +18,7 @@ const CommentSection = (props)=>{
 
      const fetchComments = async ()=>{
         try {
-            setIsLoading({isLoading: true})
+            setIsLoading( true)
             console.log("fetchTries");
             console.log("test comments",props.book);
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${props.book}`,{
@@ -29,18 +29,18 @@ const CommentSection = (props)=>{
             if(response.ok) {
                 console.log("fetchHappens");
               const data = await response.json()
-                setComments({ comments: data })
+                setComments( data )
                 console.log(comments)
             } else {
                 /* console.log('error while fetching') */
-                setError({error: "Get"})
+                setError( "Get")
                 
             }
           } catch(err) {
             console.log(err)
-            setError({error: "Get"})
+            setError("Get")
                 
-          }finally{setIsLoading({isLoading: false}); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000)}
+          }finally{setIsLoading( false); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000)}
      }
      /* const componentDidMount = async () => {
         props.book && fetchComments();

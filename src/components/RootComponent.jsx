@@ -9,7 +9,7 @@ const RootComponent = (props)=>{
     } */
     const [cardId, setCardId] = useState("");
     const cardSelected= (id)=>{
-        setCardId({cardId: `${id}`});
+        setCardId(id);
         console.log(`card selected ${id} at root`)
     }
 

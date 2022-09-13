@@ -20,7 +20,7 @@ import CommentSection from "./CommentSection";
                 <>
             <Card onClick={
                 (e)=>{
-                    selected === true ? setSelected({selected: false}): setSelected({selected: true});
+                    selected === true ? setSelected( false): setSelected( true);
                     console.log(this, "clicked card"); props.cardSelected(props.book.asin);  
                 }
             } className={`ml-4 mb-4 ${selected ? "highlight" : "noHighlight"}`} style={{ width: '16rem' }} >

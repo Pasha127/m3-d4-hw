@@ -22,14 +22,14 @@ const CommentList= (props)=>{
                 props.fetchComments()
               } else {
                 console.log('error while deleting')
-                setError({error: "Delete"})
+                setError( "Delete")
             }
         } catch(err) {
             console.log(err)
-            setError({error: "Delete"})
-          }finally{setIsLoading({isLoading: false}); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000); ;}
+            setError( "Delete")
+          }finally{setIsLoading( false); setTimeout(()=>{setError(""); console.log("err cleared")},5000); ;}
      }   
-     
+
          return(<>
          {error && <ErrorComp error={error}/>}
             {isLoading && <LoadingComp/>}
