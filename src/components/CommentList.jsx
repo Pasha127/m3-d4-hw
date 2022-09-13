@@ -17,7 +17,7 @@ class CommentList extends Component{
             })
             if(response.ok) {
                 console.log("delHappens"); 
-                //this.forceUpdate();               
+                this.props.fetchComments();              
               } else {
                 console.log('error while deleting')
                 this.setState({error: "Delete"})
@@ -25,11 +25,8 @@ class CommentList extends Component{
         } catch(err) {
             console.log(err)
             this.setState({error: "Delete"})
-          }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000); this.props.fetchComments();}
-     }
-     componentDidUpdate = (prevProps,prevState) =>{
-        if(prevProps.comments !== this.props.comments){ this.forceUpdate();console.log("update")} 
-     }
+          }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000); }
+     }     
 
      render(){
          return(<>
