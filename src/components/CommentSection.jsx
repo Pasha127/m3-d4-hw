@@ -40,7 +40,7 @@ const CommentSection = (props)=>{
             console.log(err)
             setError("Get")
                 
-          }finally{setIsLoading( false); setTimeout(()=>{setError({error: ""}); console.log("err cleared")},5000)}
+          }finally{setIsLoading( false); setTimeout(()=>{setError( ""); console.log("err cleared")},5000)}
      }}
      /* const componentDidMount = async () => {
         props.book && fetchComments();
