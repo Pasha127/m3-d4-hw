@@ -38,9 +38,10 @@ class CommentSection extends Component{
           }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000)}
      }
      componentDidMount = async () => {
+        this.props.book && this.fetchComments();
     }
     componentDidUpdate=(prevProps,prevState)=>{
-        prevState !== this.state && this.fetchComments();
+        if(prevProps.book !== this.props.book){this.fetchComments();} 
     }
      render(){
          return(<>

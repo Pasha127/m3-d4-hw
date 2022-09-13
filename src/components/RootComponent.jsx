@@ -25,9 +25,9 @@ render(){
         <BookList cardSelected={this.cardSelected} books={this.props.books}/>        
         </div>
       </div>      
-        <div className='homeCommentContainer'><p>Test Div</p></div>
+        <div className='homeCommentContainer'>
         <CommentSection book={this.state.cardId}/>
-        
+        </div>
     </div>
 )}}
 

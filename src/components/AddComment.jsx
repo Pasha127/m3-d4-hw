@@ -56,10 +56,13 @@ class AddComment extends Component{
             }
           })}
      }
+     componentDidUpdate =(prevProps,prevState)=>{
+      if(prevState.query !== this.state.query){this.props.fetchComments()}
+     }
      render(){
          return(<>
             {this.state.error && <ErrorComp error={this.state.error}/>}
-            {this.state.isLoading && <LoadingComp/>}
+            {/* {this.state.isLoading && <LoadingComp/>} */}
             <InputGroup className="mb-3">
               <div className="d-flex flex-row">
                 
@@ -67,6 +70,7 @@ class AddComment extends Component{
               placeholder="New Comment"
               aria-label="New Comment"
               aria-describedby="basic-addon2"
+              value= {this.state.query.comment}
               onChange={(e)=>{this.setQuery(e); console.log(this.state.query)}} 
               />
             <InputGroup.Append>
