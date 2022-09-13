@@ -1,14 +1,14 @@
 import {Alert} from "react-bootstrap";
 import {useState} from "react";
              
-const ErrorComp= ()=>{
+const ErrorComp= (props)=>{
       
         return(
             <>
-            {this.props.error && console.log(this.props.error)}
+            {props.error && console.log(props.error)}
             <div className="alertContainer">
             <Alert variant="danger">
-                {`Attention! ${this.props.error} failed!`}
+                {`Attention! ${props.error} failed!`}
             </Alert>
         </div>
         </>
