@@ -14,14 +14,14 @@ const CommentSection = (props)=>{
      const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [selected, setSelected] = useState(false);
-    const [comments, setComments] = useState(null);
+    const [comments, setComments] = useState([]);
 
      const fetchComments = async ()=>{
         try {
             setIsLoading({isLoading: true})
             console.log("fetchTries");
             console.log("test comments",props.book);
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/$props.book}`,{
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${props.book}`,{
                 headers: {
                     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzA3ODg0NDFlYjc2ZDAwMTUxNTAxZjgiLCJpYXQiOjE2NjI4ODA5NzMsImV4cCI6MTY2NDA5MDU3M30.LfQNzOVOStsDroMA6F7Hu2gO4oCR7rLxAzXx1RhXmk8"
                 }
@@ -30,7 +30,7 @@ const CommentSection = (props)=>{
                 console.log("fetchHappens");
               const data = await response.json()
                 setComments({ comments: data })
-                /* console.log(this.state.comments) */
+                console.log(comments)
             } else {
                 /* console.log('error while fetching') */
                 setError({error: "Get"})
