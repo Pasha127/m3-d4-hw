@@ -26,7 +26,7 @@ const AddComment = (props)=>{
      const setMyQuery = (e) =>{      
       setQuery( {...query,
           comment: e.target.value,
-          elementId: this.props.book
+          elementId: props.book
         }        
       );setAllowFetch(false);
   }
@@ -67,7 +67,7 @@ const AddComment = (props)=>{
       if(allowFetch && prevState.query !== query){this.props.fetchComments()}
      } */
      useEffect(() => {
-      props.fetchComments();
+      if(allowFetch){props.fetchComments();}
     }, [query]);
          return(<>
             {error && <ErrorComp error={error}/>}
