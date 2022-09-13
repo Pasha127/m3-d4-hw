@@ -11,14 +11,16 @@ class AddComment extends Component{
           elementId: ""
         },
         isLoading: false,
-        error: ""
+        error: "",
+        allowFetch: true
      }
      setQuery = (e) =>{      
       this.setState({
         query: {...this.state.query,
           comment: e.target.value,
           elementId: this.props.book
-        }
+        },
+        allowFetch: false
       });
   }
      setRate = (e) =>{      
@@ -53,11 +55,13 @@ class AddComment extends Component{
               comment: "",
               elementId: "",
               rate: ""
-            }
+            },isLoading: false,
+            error: "",
+            allowFetch: true
           })}
      }
      componentDidUpdate =(prevProps,prevState)=>{
-      if(prevState.query !== this.state.query){this.props.fetchComments()}
+      if(this.state.allowFetch && prevState.query !== this.state.query){this.props.fetchComments()}
      }
      render(){
          return(<>
