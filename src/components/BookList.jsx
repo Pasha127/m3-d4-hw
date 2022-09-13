@@ -1,21 +1,20 @@
-import {Component} from "react";
+import {useState} from "react";
 import {Form,Spinner} from "react-bootstrap";
 import SingleBook from "./SingleBook";
-
-class BookList extends Component{
-    state={
+const BookList= ()=>{
+    /* state={
         query: "",
         isLoading: true
-    }
+    } */
 
-    setVal = (e) =>{
+    const setVal = (e) =>{
         e.preventDefault();
         this.setState({
             query: e.target.value
         });
     }   
     
-    render(){
+    
         return(
             <>
             {this.state.isLoading && 
@@ -45,7 +44,7 @@ class BookList extends Component{
             </div>
             </>
             )
-        }
+        
         
     }   
 

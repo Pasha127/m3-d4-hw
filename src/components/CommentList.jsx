@@ -1,13 +1,13 @@
 import {Button} from "react-bootstrap";
-import {Component} from "react";
+import {useState} from "react";
 import ErrorComp from "./ErrorComp";
 import LoadingComp from "./LoadingComp";
 
-class CommentList extends Component{
-    state={isLoading: false,
-        error:     ""   }   
+const CommentList= ()=>{
+    /* state={isLoading: false,
+        error:     ""   }   */ 
      
-     deleteComment = async (id) =>{
+        const deleteComment = async (id) =>{
         try {
             this.setState({isLoading: true})
             console.log("postTryHappens");
@@ -27,11 +27,11 @@ class CommentList extends Component{
             this.setState({error: "Delete"})
           }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000); this.props.fetchComments();}
      }
-     componentDidUpdate = (prevProps,prevState) =>{
+     const componentDidUpdate = (prevProps,prevState) =>{
         if(prevProps.comments !== this.props.comments){ this.forceUpdate();console.log("update")} 
      }
 
-     render(){
+     
          return(<>
          {this.state.error && <ErrorComp error={this.state.error}/>}
             {this.state.isLoading && <LoadingComp/>}
@@ -50,7 +50,7 @@ class CommentList extends Component{
                 </div>)}
             </div>
             </>)
-        }
+        
 }
 
 export default CommentList

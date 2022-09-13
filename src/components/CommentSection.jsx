@@ -1,17 +1,17 @@
 //import {} from "react-bootstrap";
-import {Component} from "react";
+import {useState} from "react";
 import AddComment from "./AddComment";
 import CommentList from "./CommentList";
 import ErrorComp from "./ErrorComp";
 import LoadingComp from "./LoadingComp";
 
-class CommentSection extends Component{
-    state={
+const CommentSection = ()=>{
+    /* state={
         selected: false,
         isLoading: false,
         error:     ""   
-     }
-     fetchComments = async ()=>{
+     } */
+     const fetchComments = async ()=>{
         try {
             this.setState({isLoading: true})
             console.log("fetchTries");
@@ -37,13 +37,13 @@ class CommentSection extends Component{
                 
           }finally{this.setState({isLoading: false}); setTimeout(()=>{this.setState({error: ""}); console.log("err cleared")},5000)}
      }
-     componentDidMount = async () => {
+     const componentDidMount = async () => {
         this.props.book && this.fetchComments();
     }
-    componentDidUpdate=(prevProps,prevState)=>{
+    const componentDidUpdate=(prevProps,prevState)=>{
         if(prevProps.book !== this.props.book){this.fetchComments();} 
     }
-     render(){
+     
          return(<>
             
             {this.state.error && <ErrorComp error={this.state.error}/>}
@@ -54,7 +54,7 @@ class CommentSection extends Component{
             </div>
          </>
             )
-        }
+        
 }
 
 export default CommentSection

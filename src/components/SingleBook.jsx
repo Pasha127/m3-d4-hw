@@ -1,21 +1,21 @@
 import {Card} from "react-bootstrap";
-import {Component } from "react";
+import {useState} from "react";
 import CommentSection from "./CommentSection";
 
 /* {bookList.filter(book => {book.title.toLowerCase().includes(this.props.query.toLowerCase())}).map((book, index) => (                    
     <Card 
     */                  
-   class SingleBook extends Component{
+    const SingleBook= ()=>{
        
        
-       state={
+       /* state={
            selected: false,
           
                 
-        }
+        } */
         
         
-        render (){
+        
             return(
                 <>
             <Card onClick={
@@ -38,7 +38,7 @@ import CommentSection from "./CommentSection";
                
             </>
         );
-    }
+    
 }
    
 

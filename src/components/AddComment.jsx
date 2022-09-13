@@ -1,10 +1,10 @@
 import {InputGroup, Dropdown, DropdownButton, FormControl, Button} from "react-bootstrap";
-import {Component} from "react";
+import {useState} from "react";
 import ErrorComp from "./ErrorComp";
 import LoadingComp from "./LoadingComp";
 
-class AddComment extends Component{
-    state={
+const AddComment = ()=>{
+    /* state={
         query: {
           comment: "",
           rate: "",
@@ -13,8 +13,8 @@ class AddComment extends Component{
         isLoading: false,
         error: "",
         allowFetch: true
-     }
-     setQuery = (e) =>{      
+     } */
+     const setQuery = (e) =>{      
       this.setState({
         query: {...this.state.query,
           comment: e.target.value,
@@ -23,7 +23,7 @@ class AddComment extends Component{
         allowFetch: false
       });
   }
-     setRate = (e) =>{      
+     const setRate = (e) =>{      
       this.setState({
         query: {...this.state.query,
           rate: e.target.innerText
@@ -31,7 +31,7 @@ class AddComment extends Component{
         error: ""
       });
   }
-     addComment = async () =>{
+     const addComment = async () =>{
         try {
             console.log("postTryHappens");
             const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`,{
@@ -60,10 +60,10 @@ class AddComment extends Component{
             allowFetch: true
           })}
      }
-     componentDidUpdate =(prevProps,prevState)=>{
+     const componentDidUpdate =(prevProps,prevState)=>{
       if(this.state.allowFetch && prevState.query !== this.state.query){this.props.fetchComments()}
      }
-     render(){
+     
          return(<>
             {this.state.error && <ErrorComp error={this.state.error}/>}
             {/* {this.state.isLoading && <LoadingComp/>} */}
@@ -108,7 +108,7 @@ class AddComment extends Component{
           </div>
           </InputGroup>
           </>)
-        }
+        
 }
 
 export default AddComment

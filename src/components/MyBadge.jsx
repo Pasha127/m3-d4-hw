@@ -1,14 +1,14 @@
-import {Component} from "react";
 import {Badge} from "react-bootstrap";
+import {useState} from "react";
 
-class MyBadge extends Component{
-    render(){
+const MyBadge = ()=>{
+    
         return(
             <Badge pill variant="secondary">
             {this.props.inputText}
             </Badge>
         )
-    }
+    
 
 }
 

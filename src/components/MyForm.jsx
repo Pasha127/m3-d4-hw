@@ -1,19 +1,19 @@
-import { Component } from "react"
+import {useState} from "react";
 import { Form, Button } from "react-bootstrap";
 
 
-class MyForm extends Component{
-    state={
+const MyForm = ()=>{
+   /*  state={
         query:""
-    };
-    setVal = (e) =>{
+    }; */
+    const setVal = (e) =>{
         e.preventDefault();
         this.setState({
             query: e.target.value
         });
     }
         
-    render(){
+    
         return(
             
             <Form>
@@ -30,6 +30,6 @@ class MyForm extends Component{
             )
         }
         
-}
+
 
 export default MyForm;

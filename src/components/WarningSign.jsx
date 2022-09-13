@@ -1,9 +1,9 @@
-import {Component} from "react";
+import {useState} from "react";
 import {Alert} from "react-bootstrap";
 
 
-class WarningSign extends Component{
-    render(){
+const WarningSign= ()=>{
+    
         return(
 
             
@@ -13,7 +13,7 @@ class WarningSign extends Component{
                 </Alert>
                 )
   ));
-}
+
 }
 
 export default WarningSign;

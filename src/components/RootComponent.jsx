@@ -1,17 +1,17 @@
-import {Component} from "react";
+import {useState} from "react";
 import BookList from "./BookList";
 import CommentSection from "./CommentSection";
 
 
-class RootComponent extends Component{
-    state={
+const RootComponent = ()=>{
+   /*  state={
         cardId: ""
-    }
-    cardSelected= (id)=>{
+    } */
+    const cardSelected= (id)=>{
         this.setState({cardId: `${id}`});
         console.log(`card selected ${id} at root`)
     }
-render(){
+
     return(
 <div className="App d-flex flex-row">
       {/* <WarningSign inputText="And this is an example!"/>
@@ -29,7 +29,7 @@ render(){
         <CommentSection book={this.state.cardId}/>
         </div>
     </div>
-)}}
+)}
 
 
     export default RootComponent

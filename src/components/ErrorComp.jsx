@@ -1,8 +1,8 @@
 import {Alert} from "react-bootstrap";
-import {Component } from "react";
+import {useState} from "react";
              
-   class ErrorComp extends Component{
-      render(){
+const ErrorComp= ()=>{
+      
         return(
             <>
             {this.props.error && console.log(this.props.error)}
@@ -16,6 +16,6 @@ import {Component } from "react";
 
 
         )
-      }
+      
     }
 export default ErrorComp

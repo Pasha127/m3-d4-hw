@@ -1,8 +1,8 @@
 import {Spinner} from "react-bootstrap";
-import {Component } from "react";
+import {useState} from "react";
              
-   class LoadingComp extends Component{
-      render(){
+const LoadingComp = ()=>{
+     
         return(
             
             <div className="greyBg">
@@ -17,6 +17,6 @@ import {Component } from "react";
 
 
         )
-      }
+      
     }
 export default LoadingComp
